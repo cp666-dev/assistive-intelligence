@@ -23,8 +23,8 @@
     if (!s.helper) {
       const long = x.now - s.since > 20000;
       return long
-        ? { state: 'offline', word: 'OFFLINE', detail: 'Assistant service isn’t running', detailTitle: 'The helper app does the listening and planning on this Mac. Not installed yet? Get it from the link in the panel. Installed? It starts at login; run Install.command again to repair it.', micsFull: full }
-        : { state: 'offline', word: 'CONNECTING', detail: 'Reaching the assistant service', micsFull: full };
+        ? { state: 'offline', word: 'OFFLINE', detail: 'Helper app isn’t running', detailTitle: 'The helper app does the listening and planning on this Mac. Not installed yet? Get it from the link in the panel. Installed? It starts at login; run Install.command again to repair it.', micsFull: full }
+        : { state: 'offline', word: 'CONNECTING', detail: 'Reaching the helper app', micsFull: full };
     }
     if (s.llm === 'paused') return { state: 'paused', word: 'PAUSED', detail: 'Giving LUNA memory · back by itself', micsFull: full };
     if (s.stt === 'loading' || s.llm === 'loading') return { state: 'waking', word: 'WAKING UP', detail: 'Loading speech and planner · about 10 s', micsFull: full };
@@ -219,7 +219,7 @@
 
   /** Slot list when there are no slots, per state (§4.4). */
   function emptyLines(state, connecting) {
-    if (connecting) return ['Connecting to the assistant service. This takes a few seconds after login.'];
+    if (connecting) return ['Connecting to the helper app. This takes a few seconds after login.'];
     if (state === 'waking') return ['Typed requests are kept and planned as soon as it’s ready.'];
     return ['Requests heard in the room become numbered slots here, newest first.', 'Nothing runs until you press GO, or ⌥ and the slot number.'];
   }

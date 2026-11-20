@@ -330,7 +330,7 @@ function submitPrompt(text) {
     addNotice(`local-${Date.now()}`, 'The helper app isn’t running, so nothing can be planned yet. If you haven’t installed it, see the panel’s GET THE HELPER link.');
     return false;
   }
-  helper.prompt(text).catch((e) => addNotice(`local-${Date.now()}`, `Could not reach the assistant service: ${e.message}`));
+  helper.prompt(text).catch((e) => addNotice(`local-${Date.now()}`, `Could not reach the helper app: ${e.message}`));
   return true;
 }
 

@@ -20,8 +20,8 @@ export PATH="$HOME/.local/bin:/opt/homebrew/bin:$PATH"
 source "$HOME/.nvm/nvm.sh" && nvm use 22 >/dev/null
 
 # What gets tested is what gets packed: refuse uncommitted changes.
-git -C "$REPO" diff --quiet HEAD -- assistant assistant-helper installer \
-  || { echo "Commit your changes to assistant/, assistant-helper/ and installer/ first."; exit 1; }
+git -C "$REPO" diff --quiet HEAD -- assistant assistant-helper installer LICENSE NOTICE \
+  || { echo "Commit your changes to assistant/, assistant-helper/, installer/, LICENSE and NOTICE first."; exit 1; }
 
 echo "Testing the Add On ..."
 (cd "$REPO/assistant" && { [ -d node_modules ] || npm ci --no-audit --no-fund >/dev/null; } && npx vitest run >/dev/null) \
@@ -31,7 +31,7 @@ echo "Testing the helper ..."
   || { echo "Helper tests failed: run uv run pytest in assistant-helper/"; exit 1; }
 
 mkdir -p "$WORK/src" "$WORK/stage"
-git -C "$REPO" archive HEAD assistant assistant-helper installer | tar -x -C "$WORK/src"
+git -C "$REPO" archive HEAD assistant assistant-helper installer LICENSE NOTICE | tar -x -C "$WORK/src"
 
 if [ -e "$DEST" ] && [ ! -f "$DEST/Install.command" ]; then
   echo "$DEST exists and isn't an earlier build; move it away first."; exit 1
@@ -45,6 +45,7 @@ mkdir -p "$DEST"
 pkg="$(node -p "require('$WORK/src/assistant/manifest.json').package_name")"
 ditto "$WORK/src/assistant" "$WORK/stage/$pkg"
 rm -rf "$WORK/stage/$pkg/tests" "$WORK/stage/$pkg/vitest.config.js" "$WORK/stage/$pkg/package-lock.json" "$WORK/stage/$pkg/package.json"
+cp "$WORK/src/LICENSE" "$WORK/src/NOTICE" "$WORK/stage/$pkg/"
 # --no-vendor ships the SDK bundle the tests ran against, not whichever SDK is installed.
 (cd "$WORK/stage" && node "$CLI" pack "$WORK/stage/$pkg" --no-vendor --out "$DEST/$NAME.lunaaddon" >/dev/null)
 listing="$(unzip -l "$DEST/$NAME.lunaaddon")"  # not piped into grep -q: SIGPIPE + pipefail
@@ -54,7 +55,7 @@ grep -q " $pkg/manifest.json" <<<"$listing" || { echo "The .lunaaddon has no $pk
 ditto "$WORK/src/assistant-helper" "$DEST/helper"
 rm -rf "$DEST/helper/tests" "$DEST/helper/smoke" "$DEST/helper/.gitignore"
 
-cp "$WORK/src/installer/Install.command" "$WORK/src/installer/Uninstall.command" "$WORK/src/installer/READ ME FIRST.md" "$DEST/"
+cp "$WORK/src/installer/Install.command" "$WORK/src/installer/Uninstall.command" "$WORK/src/installer/READ ME FIRST.md" "$WORK/src/LICENSE" "$WORK/src/NOTICE" "$DEST/"
 chmod +x "$DEST/Install.command" "$DEST/Uninstall.command"
 find "$DEST" -name .DS_Store -delete
 
