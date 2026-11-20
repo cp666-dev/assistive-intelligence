@@ -1,0 +1,857 @@
+{
+ "actions": [
+  {
+   "name": "createTracks",
+   "description": "Create audio or instrument tracks, optionally on hardware inputs (\"1\", \"5-6\" for a stereo pair, or an input name). Tracks are created in the order given.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "tracks": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "name": {
+         "type": "string"
+        },
+        "kind": {
+         "type": "string",
+         "enum": [
+          "audio",
+          "instrument"
+         ]
+        },
+        "format": {
+         "type": "string",
+         "enum": [
+          "mono",
+          "stereo"
+         ]
+        },
+        "input": {
+         "type": "string"
+        },
+        "color": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "name"
+       ],
+       "additionalProperties": false
+      }
+     },
+     "recordArm": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "tracks"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "createBus",
+   "description": "Create an aux bus.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string"
+     },
+     "format": {
+      "type": "string",
+      "enum": [
+       "mono",
+       "stereo"
+      ]
+     }
+    },
+    "required": [
+     "name"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "setOutput",
+   "description": "Route the main output of tracks/buses to a bus (created if missing) or \"main\" (the main output).",
+   "params": {
+    "type": "object",
+    "properties": {
+     "channels": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "description": "Track or bus names as the user says them"
+     },
+     "to": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "channels",
+     "to"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "createGroup",
+   "description": "Create a group linking tracks/buses so one fader/edit controls all of them.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string"
+     },
+     "members": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "description": "Track or bus names as the user says them"
+     },
+     "links": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "enum": [
+        "mix",
+        "edit",
+        "plugin"
+       ]
+      }
+     }
+    },
+    "required": [
+     "name",
+     "members"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "addSend",
+   "description": "Add a send from tracks to a bus (created stereo if missing).",
+   "params": {
+    "type": "object",
+    "properties": {
+     "from": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "description": "Track or bus names as the user says them"
+     },
+     "to": {
+      "type": "string"
+     },
+     "levelDb": {
+      "type": "number"
+     },
+     "preFader": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "from",
+     "to"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "insertPlugin",
+   "description": "Load a plugin (search text such as \"dbx 160\", \"1176\", \"LA-2A\") on a track or bus.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "on": {
+      "type": "string"
+     },
+     "plugin": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "on",
+     "plugin"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "setRecordArm",
+   "description": "Record-arm or disarm tracks.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "tracks": {
+      "description": "Track names, or \"armed\" (record-armed tracks), \"all\", \"selected\"",
+      "anyOf": [
+       {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Track or bus names as the user says them"
+       },
+       {
+        "type": "string",
+        "enum": [
+         "armed",
+         "all",
+         "selected"
+        ]
+       }
+      ]
+     },
+     "on": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "tracks",
+     "on"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "setInputMonitor",
+   "description": "Turn input monitoring on or off for tracks.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "tracks": {
+      "description": "Track names, or \"armed\" (record-armed tracks), \"all\", \"selected\"",
+      "anyOf": [
+       {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Track or bus names as the user says them"
+       },
+       {
+        "type": "string",
+        "enum": [
+         "armed",
+         "all",
+         "selected"
+        ]
+       }
+      ]
+     },
+     "on": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "tracks",
+     "on"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "setMute",
+   "description": "Mute or unmute tracks/buses.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "tracks": {
+      "description": "Track names, or \"armed\" (record-armed tracks), \"all\", \"selected\"",
+      "anyOf": [
+       {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Track or bus names as the user says them"
+       },
+       {
+        "type": "string",
+        "enum": [
+         "armed",
+         "all",
+         "selected"
+        ]
+       }
+      ]
+     },
+     "on": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "tracks",
+     "on"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "setSolo",
+   "description": "Solo or unsolo tracks.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "tracks": {
+      "description": "Track names, or \"armed\" (record-armed tracks), \"all\", \"selected\"",
+      "anyOf": [
+       {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Track or bus names as the user says them"
+       },
+       {
+        "type": "string",
+        "enum": [
+         "armed",
+         "all",
+         "selected"
+        ]
+       }
+      ]
+     },
+     "on": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "tracks",
+     "on"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "setGain",
+   "description": "Set the fader of tracks/buses in dB.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "tracks": {
+      "description": "Track names, or \"armed\" (record-armed tracks), \"all\", \"selected\"",
+      "anyOf": [
+       {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Track or bus names as the user says them"
+       },
+       {
+        "type": "string",
+        "enum": [
+         "armed",
+         "all",
+         "selected"
+        ]
+       }
+      ]
+     },
+     "db": {
+      "type": "number"
+     }
+    },
+    "required": [
+     "tracks",
+     "db"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "renameTrack",
+   "description": "Rename a track or bus.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "from": {
+      "type": "string"
+     },
+     "to": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "from",
+     "to"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "setTrackColor",
+   "description": "Colour tracks: red, orange, yellow, green, teal, blue, purple, pink, brown, grey.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "tracks": {
+      "description": "Track names, or \"armed\" (record-armed tracks), \"all\", \"selected\"",
+      "anyOf": [
+       {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Track or bus names as the user says them"
+       },
+       {
+        "type": "string",
+        "enum": [
+         "armed",
+         "all",
+         "selected"
+        ]
+       }
+      ]
+     },
+     "color": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "tracks",
+     "color"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "deleteTracks",
+   "description": "Delete tracks or buses. Destructive: only when explicitly asked.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "tracks": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "description": "Track or bus names as the user says them"
+     }
+    },
+    "required": [
+     "tracks"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "newPlaylist",
+   "description": "Start a new empty playlist (take lane) on tracks, ready to record a new take.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "tracks": {
+      "description": "Track names, or \"armed\" (record-armed tracks), \"all\", \"selected\"",
+      "anyOf": [
+       {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Track or bus names as the user says them"
+       },
+       {
+        "type": "string",
+        "enum": [
+         "armed",
+         "all",
+         "selected"
+        ]
+       }
+      ]
+     },
+     "duplicate": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "tracks"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "favouriteTake",
+   "description": "Mark the current take on tracks as a favourite (★ on the playlist name and a marker).",
+   "params": {
+    "type": "object",
+    "properties": {
+     "tracks": {
+      "description": "Track names, or \"armed\" (record-armed tracks), \"all\", \"selected\"",
+      "anyOf": [
+       {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Track or bus names as the user says them"
+       },
+       {
+        "type": "string",
+        "enum": [
+         "armed",
+         "all",
+         "selected"
+        ]
+       }
+      ]
+     },
+     "label": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "tracks"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "setStartEarlier",
+   "description": "Move the play/record start N bars earlier, giving more intro before the performers come in.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "bars": {
+      "type": "integer",
+      "minimum": 1
+     }
+    },
+    "required": [
+     "bars"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "setPlayStart",
+   "description": "Set the play/record start position.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "at": {
+      "description": "A bar number (1-based), a marker name, or \"playhead\"",
+      "anyOf": [
+       {
+        "type": "integer",
+        "minimum": 1
+       },
+       {
+        "type": "string"
+       }
+      ]
+     }
+    },
+    "required": [
+     "at"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "addMarker",
+   "description": "Add a named marker.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string"
+     },
+     "at": {
+      "description": "A bar number (1-based), a marker name, or \"playhead\"",
+      "anyOf": [
+       {
+        "type": "integer",
+        "minimum": 1
+       },
+       {
+        "type": "string"
+       }
+      ]
+     }
+    },
+    "required": [
+     "name",
+     "at"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "cutClick",
+   "description": "Silence the click from a position onwards during playback/recording (\"cues\": headphones only; \"everywhere\": cues and control room).",
+   "params": {
+    "type": "object",
+    "properties": {
+     "at": {
+      "description": "A bar number (1-based), a marker name, or \"playhead\"",
+      "anyOf": [
+       {
+        "type": "integer",
+        "minimum": 1
+       },
+       {
+        "type": "string"
+       }
+      ]
+     },
+     "where": {
+      "type": "string",
+      "enum": [
+       "cues",
+       "everywhere"
+      ]
+     }
+    },
+    "required": [
+     "at",
+     "where"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "clearClickCuts",
+   "description": "Remove all click cuts.",
+   "params": {
+    "type": "object",
+    "properties": {},
+    "required": [],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "clickSettings",
+   "description": "Turn the click on/off during play, record or count-in, and count-in itself.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "duringPlay": {
+      "type": "boolean"
+     },
+     "duringRecord": {
+      "type": "boolean"
+     },
+     "duringCountIn": {
+      "type": "boolean"
+     },
+     "countIn": {
+      "type": "boolean"
+     }
+    },
+    "required": [],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "setTempo",
+   "description": "Set the session tempo (BPM).",
+   "params": {
+    "type": "object",
+    "properties": {
+     "bpm": {
+      "type": "number",
+      "minimum": 20,
+      "maximum": 400
+     }
+    },
+    "required": [
+     "bpm"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "setMeter",
+   "description": "Set the time signature.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "numerator": {
+      "type": "integer"
+     },
+     "denominator": {
+      "type": "integer"
+     }
+    },
+    "required": [
+     "numerator",
+     "denominator"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "setLoop",
+   "description": "Set the loop range in bars (stop bar exclusive) and turn looping on.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "fromBar": {
+      "description": "A bar number (1-based), a marker name, or \"playhead\"",
+      "anyOf": [
+       {
+        "type": "integer",
+        "minimum": 1
+       },
+       {
+        "type": "string"
+       }
+      ]
+     },
+     "toBar": {
+      "description": "A bar number (1-based), a marker name, or \"playhead\"",
+      "anyOf": [
+       {
+        "type": "integer",
+        "minimum": 1
+       },
+       {
+        "type": "string"
+       }
+      ]
+     }
+    },
+    "required": [
+     "fromBar",
+     "toBar"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "transport",
+   "description": "Play, stop, record or return to zero.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "command": {
+      "type": "string",
+      "enum": [
+       "play",
+       "stop",
+       "record",
+       "returnToZero"
+      ]
+     }
+    },
+    "required": [
+     "command"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "armAssistant",
+   "description": "Arm or disarm tracks for the assistant: it listens to their inputs.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "tracks": {
+      "description": "Track names, or \"armed\" (record-armed tracks), \"all\", \"selected\"",
+      "anyOf": [
+       {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Track or bus names as the user says them"
+       },
+       {
+        "type": "string",
+        "enum": [
+         "armed",
+         "all",
+         "selected"
+        ]
+       }
+      ]
+     },
+     "on": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "tracks",
+     "on"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "createAssistantInputs",
+   "description": "Create input-only \"Assistant\" tracks (no output) on the given inputs and arm them for the assistant, e.g. a control-room and a live-room mic.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "inputs": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "inputs"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "applyRecipe",
+   "description": "Apply a saved setup from the user's profile (\"my usual string quartet setup\").",
+   "params": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "name"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "saveRecipe",
+   "description": "Save the current session setup (tracks, inputs, routing, sends, plugins, groups) as a named setup.",
+   "params": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string"
+     },
+     "aliases": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "tracks": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "description": "Track or bus names as the user says them"
+     }
+    },
+    "required": [
+     "name"
+    ],
+    "additionalProperties": false
+   }
+  }
+ ]
+}

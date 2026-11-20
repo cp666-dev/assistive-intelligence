@@ -1,0 +1,225 @@
+{
+ "session": {
+  "name": "Test",
+  "tempo": 120,
+  "meter": "4/4",
+  "playStartBar": 1,
+  "locationBar": 29,
+  "playing": false,
+  "recording": false
+ },
+ "tracks": [
+  {
+   "name": "Assistant",
+   "type": "audio",
+   "format": "mono",
+   "input": "MIC/LINE 8",
+   "output": [],
+   "sends": [],
+   "plugins": [],
+   "recordArmed": false,
+   "assistantArmed": true,
+   "playlist": "V1",
+   "selected": false
+  },
+  {
+   "name": "Vocal",
+   "type": "audio",
+   "format": "mono",
+   "input": "MIC/LINE 7",
+   "output": [
+    "Main"
+   ],
+   "sends": [],
+   "plugins": [],
+   "recordArmed": false,
+   "assistantArmed": false,
+   "playlist": "V1",
+   "selected": false
+  },
+  {
+   "name": "Kick",
+   "type": "audio",
+   "format": "mono",
+   "input": "MIC/LINE 1",
+   "output": [
+    "Drums"
+   ],
+   "sends": [
+    {
+     "slot": 0,
+     "bus": "Comp Bus"
+    }
+   ],
+   "plugins": [],
+   "recordArmed": true,
+   "assistantArmed": false,
+   "playlist": "V1",
+   "selected": false
+  },
+  {
+   "name": "Snare",
+   "type": "audio",
+   "format": "mono",
+   "input": "MIC/LINE 2",
+   "output": [
+    "Drums"
+   ],
+   "sends": [
+    {
+     "slot": 0,
+     "bus": "Comp Bus"
+    }
+   ],
+   "plugins": [],
+   "recordArmed": true,
+   "assistantArmed": false,
+   "playlist": "V1",
+   "selected": false
+  },
+  {
+   "name": "Hats",
+   "type": "audio",
+   "format": "mono",
+   "input": "MIC/LINE 3",
+   "output": [
+    "Drums"
+   ],
+   "sends": [],
+   "plugins": [],
+   "recordArmed": true,
+   "assistantArmed": false,
+   "playlist": "V1",
+   "selected": false
+  },
+  {
+   "name": "Ride",
+   "type": "audio",
+   "format": "mono",
+   "input": "MIC/LINE 4",
+   "output": [
+    "Drums"
+   ],
+   "sends": [],
+   "plugins": [],
+   "recordArmed": true,
+   "assistantArmed": false,
+   "playlist": "V1",
+   "selected": false
+  },
+  {
+   "name": "Overheads",
+   "type": "audio",
+   "format": "stereo",
+   "input": "MIC/LINE 5/6",
+   "output": [
+    "Drums"
+   ],
+   "sends": [],
+   "plugins": [],
+   "recordArmed": true,
+   "assistantArmed": false,
+   "playlist": "V1",
+   "selected": false
+  }
+ ],
+ "buses": [
+  {
+   "name": "Drums",
+   "format": "stereo",
+   "plugins": []
+  },
+  {
+   "name": "Comp Bus",
+   "format": "stereo",
+   "plugins": [
+    "dbx 160 Compressor"
+   ]
+  }
+ ],
+ "inputs": [
+  {
+   "number": "1",
+   "name": "MIC/LINE 1",
+   "format": "mono"
+  },
+  {
+   "number": "2",
+   "name": "MIC/LINE 2",
+   "format": "mono"
+  },
+  {
+   "number": "3",
+   "name": "MIC/LINE 3",
+   "format": "mono"
+  },
+  {
+   "number": "4",
+   "name": "MIC/LINE 4",
+   "format": "mono"
+  },
+  {
+   "number": "5",
+   "name": "MIC/LINE 5",
+   "format": "mono"
+  },
+  {
+   "number": "6",
+   "name": "MIC/LINE 6",
+   "format": "mono"
+  },
+  {
+   "number": "7",
+   "name": "MIC/LINE 7",
+   "format": "mono"
+  },
+  {
+   "number": "8",
+   "name": "MIC/LINE 8",
+   "format": "mono"
+  },
+  {
+   "number": "1-2",
+   "name": "MIC/LINE 1/2",
+   "format": "stereo"
+  },
+  {
+   "number": "3-4",
+   "name": "MIC/LINE 3/4",
+   "format": "stereo"
+  },
+  {
+   "number": "5-6",
+   "name": "MIC/LINE 5/6",
+   "format": "stereo"
+  },
+  {
+   "number": "7-8",
+   "name": "MIC/LINE 7/8",
+   "format": "stereo"
+  }
+ ],
+ "markers": [
+  {
+   "name": "Intro",
+   "bar": 1
+  },
+  {
+   "name": "Verse",
+   "bar": 5
+  },
+  {
+   "name": "Chorus",
+   "bar": 21
+  },
+  {
+   "name": "Outro",
+   "bar": 37
+  }
+ ],
+ "clickOutputs": [
+  "MON",
+  "CUE 1",
+  "CUE 2"
+ ]
+}

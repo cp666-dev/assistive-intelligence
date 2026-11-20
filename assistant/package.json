@@ -1,0 +1,20 @@
+{
+  "name": "assistive-intelligence",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "description": "UA Assistive Intelligence, a LUNA Add On built with @uaudio/luna-builder-sdk",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "serve": "ua-builder serve",
+    "install-addon": "ua-builder install",
+    "pack": "ua-builder pack --no-vendor"
+  },
+  "devDependencies": {
+    "@uaudio/luna-builder-sdk": "github:uaudio-labs/luna-builder-sdk#v3.1.1",
+    "vite": "8.3.0",
+    "vitest": "5.0.1"
+  },
+  "license": "MIT"
+}

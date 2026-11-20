@@ -1,0 +1,110 @@
+{
+ "session": {
+  "name": "Test",
+  "tempo": 120,
+  "meter": "4/4",
+  "playStartBar": 1,
+  "locationBar": 1,
+  "playing": false,
+  "recording": false
+ },
+ "tracks": [
+  {
+   "name": "Assistant",
+   "type": "audio",
+   "format": "mono",
+   "input": "MIC/LINE 8",
+   "output": [],
+   "sends": [],
+   "plugins": [],
+   "recordArmed": false,
+   "assistantArmed": true,
+   "playlist": "V1",
+   "selected": false
+  },
+  {
+   "name": "Vocal",
+   "type": "audio",
+   "format": "mono",
+   "input": "MIC/LINE 7",
+   "output": [
+    "Main"
+   ],
+   "sends": [],
+   "plugins": [],
+   "recordArmed": false,
+   "assistantArmed": false,
+   "playlist": "V1",
+   "selected": false
+  }
+ ],
+ "buses": [],
+ "inputs": [
+  {
+   "number": "1",
+   "name": "MIC/LINE 1",
+   "format": "mono"
+  },
+  {
+   "number": "2",
+   "name": "MIC/LINE 2",
+   "format": "mono"
+  },
+  {
+   "number": "3",
+   "name": "MIC/LINE 3",
+   "format": "mono"
+  },
+  {
+   "number": "4",
+   "name": "MIC/LINE 4",
+   "format": "mono"
+  },
+  {
+   "number": "5",
+   "name": "MIC/LINE 5",
+   "format": "mono"
+  },
+  {
+   "number": "6",
+   "name": "MIC/LINE 6",
+   "format": "mono"
+  },
+  {
+   "number": "7",
+   "name": "MIC/LINE 7",
+   "format": "mono"
+  },
+  {
+   "number": "8",
+   "name": "MIC/LINE 8",
+   "format": "mono"
+  },
+  {
+   "number": "1-2",
+   "name": "MIC/LINE 1/2",
+   "format": "stereo"
+  },
+  {
+   "number": "3-4",
+   "name": "MIC/LINE 3/4",
+   "format": "stereo"
+  },
+  {
+   "number": "5-6",
+   "name": "MIC/LINE 5/6",
+   "format": "stereo"
+  },
+  {
+   "number": "7-8",
+   "name": "MIC/LINE 7/8",
+   "format": "stereo"
+  }
+ ],
+ "markers": [],
+ "clickOutputs": [
+  "MON",
+  "CUE 1",
+  "CUE 2"
+ ]
+}

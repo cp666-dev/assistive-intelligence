@@ -1,0 +1,33 @@
+[project]
+name = "cp-assistant-helper"
+version = "0.1.0"
+description = "Local helper for the CP Assistant LUNA Add On: audio capture, VAD, Parakeet STT and a local MLX LLM planner."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "starlette>=0.40",
+    "uvicorn>=0.30",
+    "numpy>=1.26",
+    "sounddevice>=0.5",
+    "soxr>=0.5",
+    "onnxruntime>=1.19",
+    "jsonschema>=4.23",
+    "rapidfuzz>=3.9",
+    "parakeet-mlx>=0.5",
+    "mlx-lm>=0.32",
+]
+
+[project.scripts]
+cp-assistant-helper = "assistant_helper.__main__:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "httpx>=0.27"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["assistant_helper"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

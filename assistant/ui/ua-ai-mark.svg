@@ -1,0 +1,12 @@
+<!-- UA Assistive Intelligence status mark.
+     Geometry: UA's diamond, verbatim from LUNA.app/Contents/Resources/images/misc/UniversalAudioIcon.svg.
+     Three named parts, driven by CSS from data-state (see panel.css, "mark"):
+       #core    inner diamond fill   (state colour)
+       #ring    diamond outline      (state colour)
+       #letters UA letterform        (state colour)
+     Default colours below are the "idle" (READY) state. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 181.25 110.25" width="44" height="27" class="aip-mark" data-state="idle">
+  <path id="core" class="core" fill="none" d="M11.896,56.266 L89.983,101.538 L168.074,56.266 L89.987,8.737 Z"/>
+  <path id="ring" class="ring" fill="#E5F5FF" fill-rule="evenodd" d="M2.099,56.41L89.987,2.914l87.887,53.496l-86.633,50.22l-1.254,0.729L2.099,56.41z M11.915,56.303l78.068,45.261l78.073-45.261L89.987,8.784L11.915,56.303z"/>
+  <path id="letters" class="letters" fill="#E5F5FF" d="M107.065,76.147v-0.775V62.56l39.026-1.875l-0.21-2.718h-38.816V34.19c0-6.594-5.342-11.936-11.936-11.939c-6.594,0.004-11.934,5.346-11.934,11.939v11.588l-0.012,0.104v12.086h-2.286l-4.387,6.061l6.673-0.32v10.752c-0.007,3.82-3.1,6.914-6.923,6.92c-3.819-0.006-6.913-3.1-6.919-6.92l0.055-34.095v-0.519c0,0,0.162-4.57-2.501-6.965c-3.526-3.082-10.864-1.287-10.864-1.287c9.088,0.051,8.309,7.834,8.309,7.834l-0.014,0.937v34.095c0.002,6.594,5.34,11.937,11.935,11.937c6.594,0,11.937-5.343,11.937-11.937V63.465l13.892-0.666l0.017,12.572v0.359c0,0-0.261,4.568,2.404,6.964c3.526,3.082,10.864,1.289,10.864,1.289C106.67,84.086,107.065,76.147,107.065,76.147 M88.198,57.967V46.163l0.013-0.109V34.19c0.007-3.824,3.096-6.916,6.919-6.923c3.823,0.007,6.916,3.099,6.92,6.923l0.032,23.777H88.198z"/>
+</svg>

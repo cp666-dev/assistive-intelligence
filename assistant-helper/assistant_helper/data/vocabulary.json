@@ -1,0 +1,195 @@
+{
+  "_comment": "STT domain corrections. Each entry: spoken variants in 'from' (case-insensitive, spaces/hyphens interchangeable, whole words) -> 'to'. Longest variants win. Edit freely; the helper reloads this file when it changes.",
+  "replacements": [
+    {
+      "to": "dbx 160",
+      "from": [
+        "dee bee ex one sixty",
+        "d b x one sixty",
+        "dbx one sixty",
+        "dbx one six zero",
+        "dbx one sixty a",
+        "dbx160",
+        "dbx 160",
+        "dbx-160",
+        "dee bee x one sixty"
+      ]
+    },
+    {
+      "to": "LA-2A",
+      "from": [
+        "la two a",
+        "l a two a",
+        "el a two a",
+        "la 2a",
+        "la 2 a",
+        "la2a",
+        "la-2a",
+        "l a 2 a"
+      ]
+    },
+    {
+      "to": "LA-3A",
+      "from": [
+        "la three a",
+        "l a three a",
+        "el a three a",
+        "la 3a",
+        "la 3 a",
+        "la3a"
+      ]
+    },
+    {
+      "to": "1176",
+      "from": [
+        "eleven seventy six",
+        "eleven seventy-six",
+        "one one seven six",
+        "11 76",
+        "eleven 76"
+      ]
+    },
+    {
+      "to": "Fairchild 660",
+      "from": [
+        "fairchild six sixty",
+        "fairchild 6 60"
+      ]
+    },
+    {
+      "to": "Fairchild 670",
+      "from": [
+        "fairchild six seventy",
+        "fairchild 6 70"
+      ]
+    },
+    {
+      "to": "API 2500",
+      "from": [
+        "a p i twenty five hundred",
+        "api twenty five hundred",
+        "api 25 hundred"
+      ]
+    },
+    {
+      "to": "Pultec",
+      "from": [
+        "pull tech",
+        "pul tec",
+        "pultech",
+        "pole tech"
+      ]
+    },
+    {
+      "to": "Neve 1073",
+      "from": [
+        "neve ten seventy three",
+        "nieve ten seventy three",
+        "neve 10 73"
+      ]
+    },
+    {
+      "to": "Studer A800",
+      "from": [
+        "studer a eight hundred",
+        "studer a 800"
+      ]
+    },
+    {
+      "to": "Ampex ATR-102",
+      "from": [
+        "ampex a t r one oh two",
+        "ampex atr one oh two",
+        "ampex atr 102"
+      ]
+    },
+    {
+      "to": "SSL",
+      "from": [
+        "s s l",
+        "ess ess el"
+      ]
+    },
+    {
+      "to": "EQ",
+      "from": [
+        "e q"
+      ]
+    },
+    {
+      "to": "overheads",
+      "from": [
+        "over heads",
+        "over-heads",
+        "overhead's"
+      ]
+    },
+    {
+      "to": "overhead",
+      "from": [
+        "over head"
+      ]
+    },
+    {
+      "to": "hi-hats",
+      "from": [
+        "high hats",
+        "hi hats",
+        "high-hats",
+        "hihats"
+      ]
+    },
+    {
+      "to": "hi-hat",
+      "from": [
+        "high hat",
+        "hi hat",
+        "high-hat",
+        "hihat"
+      ]
+    },
+    {
+      "to": "talkback",
+      "from": [
+        "talk back"
+      ]
+    },
+    {
+      "to": "playlist",
+      "from": [
+        "play list"
+      ]
+    },
+    {
+      "to": "playlists",
+      "from": [
+        "play lists"
+      ]
+    },
+    {
+      "to": "bus",
+      "from": [
+        "buss"
+      ]
+    },
+    {
+      "to": "buses",
+      "from": [
+        "busses"
+      ]
+    },
+    {
+      "to": "LUNA",
+      "from": [
+        "luna",
+        "loona"
+      ]
+    },
+    {
+      "to": "re-amp",
+      "from": [
+        "re amp"
+      ]
+    }
+  ]
+}

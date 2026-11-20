@@ -1,0 +1,15 @@
+{
+    "package_name": "CP Assistant",
+    "id": "com.cp.assistant",
+    "categories": ["AI Tools", "Workflow"],
+    "title": "UA Assistive Intelligence",
+    "version": "0.2.0",
+    "manufacturer": "CP",
+    "description": "Listens to the room and your typed requests, and prepares session setup and workflow actions you run with one click. Needs its free helper app, which runs the speech recognition and language model on your Mac.",
+    "sdk_version": "3.1.1.44",
+    "min_luna_version": "3.1.1",
+    "engines": ["luna"],
+    "html": "index.html",
+    "target": "browser",
+    "icon": "icon.png"
+}

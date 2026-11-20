@@ -1,0 +1,22 @@
+UA Assistive Intelligence
+Copyright (c) 2026 Connor Panayi. Licensed under the MIT License (see LICENSE).
+
+This project includes or downloads third-party software, under its own terms:
+
+- LUNA Builder SDK (@uaudio/luna-builder-sdk), bundled as assistant/vendor/luna.global.js.
+  Copyright Universal Audio, Inc. Apache License 2.0, with the Supplemental Terms for LUNA
+  Builder SDK. https://github.com/uaudio-labs/luna-builder-sdk
+
+- Silero VAD v5, bundled as assistant-helper/assistant_helper/data/silero_vad.onnx.
+  Copyright (c) Silero Team. MIT License. https://github.com/snakers4/silero-vad
+
+Downloaded by the installer to this Mac, not included in this repository:
+
+- NVIDIA Parakeet TDT 0.6B v3 (mlx-community/parakeet-tdt-0.6b-v3). CC BY 4.0.
+  https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3
+- Qwen3-8B (mlx-community/Qwen3-8B-4bit). Apache License 2.0.
+  https://huggingface.co/Qwen/Qwen3-8B
+- The Python packages listed in assistant-helper/pyproject.toml, each under its own license.
+
+LUNA and Universal Audio are trademarks of Universal Audio, Inc. This is an independent
+Add On built with the LUNA Builder SDK.

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 512 512">
+  <!-- UA Assistive Intelligence Add On icon: a spoken request (the waveform, lit in the panel's
+       "hearing" amber) becomes an action card waiting for GO (the panel's green). A spark marks the
+       planning. Colors are the panel's own tokens (ui/tokens.css), on LUNA's dark panel face.
+       Rendered to icon.png (1024 px): see scripts/render-icon.sh. -->
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2C2F33"/>
+      <stop offset="1" stop-color="#17181A"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#41535F"/>
+      <stop offset="1" stop-color="#2F3D46"/>
+    </linearGradient>
+    <linearGradient id="go" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9AD372"/>
+      <stop offset="1" stop-color="#78B451"/>
+    </linearGradient>
+  </defs>
+
+  <!-- dark edge, panel face, inset top highlight -->
+  <rect x="0" y="0" width="512" height="512" fill="#0D0E0F"/>
+  <rect x="4" y="4" width="504" height="504" fill="url(#panel)"/>
+  <rect x="4" y="4" width="504" height="4" fill="#ffffff" opacity="0.08"/>
+
+  <!-- the spoken request: a waveform, loudest in the middle -->
+  <g fill="#FFBA00">
+    <rect x="64"  y="146" width="24" height="44"  rx="12"/>
+    <rect x="104" y="118" width="24" height="100" rx="12"/>
+    <rect x="144" y="84"  width="24" height="168" rx="12"/>
+    <rect x="184" y="58"  width="24" height="220" rx="12"/>
+    <rect x="224" y="96"  width="24" height="144" rx="12"/>
+    <rect x="264" y="128" width="24" height="80"  rx="12"/>
+    <rect x="304" y="150" width="24" height="36"  rx="12"/>
+  </g>
+
+  <!-- the spark: the request being planned -->
+  <path d="M398 84 C402 120 412 130 448 134 C412 138 402 148 398 184 C394 148 384 138 348 134 C384 130 394 120 398 84 Z" fill="#E5F5FF"/>
+
+  <!-- the action card, ready to run -->
+  <rect x="56" y="304" width="400" height="152" rx="14" fill="#0D0E0F"/>
+  <rect x="60" y="308" width="392" height="144" rx="11" fill="url(#card)"/>
+  <rect x="64" y="310" width="384" height="3" rx="1.5" fill="#ffffff" opacity="0.10"/>
+  <!-- its steps -->
+  <g fill="#E5F5FF">
+    <rect x="92" y="344" width="176" height="18" rx="9"/>
+    <rect x="92" y="378" width="132" height="18" rx="9" opacity="0.6"/>
+    <rect x="92" y="412" width="152" height="18" rx="9" opacity="0.6"/>
+  </g>
+  <!-- GO -->
+  <rect x="300" y="344" width="124" height="86" rx="10" fill="#0D0E0F"/>
+  <rect x="303" y="347" width="118" height="80" rx="8" fill="url(#go)"/>
+  <path d="M332 388 l18 18 l38 -40" fill="none" stroke="#17181A" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
